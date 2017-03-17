@@ -20,6 +20,29 @@ Or install it yourself as:
 
 ## Usage
 
+Here is a very basic example:
+
+```ruby
+require 'csv'
+require 'csv-i18n'
+require 'i18n'
+
+I18n.backend.store_translations(:en, csv: { exception: { unclosed_quoted_field: "custom error on line %{line_number}" } })
+
+CSV.parse('"')
+# lib/ruby/2.3.0/csv.rb:1898:in `block in shift': custom error on line 1 (CSV::MalformedCSVError)
+#   from lib/ruby/2.3.0/csv.rb:1805:in `loop'
+#   from lib/ruby/2.3.0/csv.rb:1805:in `shift'
+#   from lib/ruby/gems/2.3.0/gems/csv-i18n-0.1.1/lib/csv_i18n/ext.rb:6:in `shift'
+#   from lib/ruby/2.3.0/csv.rb:1747:in `each'
+#   from lib/ruby/2.3.0/csv.rb:1761:in `to_a'
+#   from lib/ruby/2.3.0/csv.rb:1761:in `read'
+#   from lib/ruby/2.3.0/csv.rb:1307:in `parse'
+#   from app.rb:7:in `<main>'
+```
+
+The library is not dependent on I18n, so you can include it before you start internationalizing your code. If I18n isn't found, it will just fall back to the default error messages. Same behavior if a translation or locale isn't found.
+
 ### Translations
 
 Once you have installed the gem, you can add your translations to the language files like this:
