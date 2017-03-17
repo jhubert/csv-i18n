@@ -6,6 +6,14 @@ class CSVI18nPresentTest < Minitest::Test
     def self.translate(key, options = {})
       "#{key} #{options[:line_number]}"
     end
+
+    def self.locale
+      :en
+    end
+
+    def self.locale_available?(locale)
+      true
+    end
   end
 
   def setup

@@ -24,7 +24,7 @@ module CSVI18n
     #      unquoted_fields_do_not_allow_r_or_n:
     #
     def translated_exception_message(msg)
-      return msg unless defined?(I18n)
+      return msg unless translatable?
 
       # This will break if the CSV class changes it's error messages
       matches = msg.match(/\s[ion]{2}?\s?\(?line (\d)\)?\.?/i)
@@ -36,6 +36,11 @@ module CSVI18n
         line_number: matches[1],
         default: msg
       )
+    end
+
+    # :reek:UtilityFunction for readability
+    def translatable?
+      defined?(::I18n) && ::I18n.locale_available?(::I18n.locale)
     end
 
     # :reek:UtilityFunction but could use parameterize('_') if rails is present
