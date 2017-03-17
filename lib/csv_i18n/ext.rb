@@ -1,4 +1,5 @@
 module CSVI18n
+  # Extension to the core ruby CSV class
   module Ext
     # Redefine the shift method to catch the exception and attempt to return
     # a translated version of the error message using I18n.t
@@ -23,6 +24,8 @@ module CSVI18n
     #      unclosed_quoted_field:
     #      unquoted_fields_do_not_allow_r_or_n:
     #
+    # :reek:FeatureEnvy because it's clear enough to leave as is
+    # :reek:NilCheck because we want certainty with the RegExp match
     def translated_exception_message(msg)
       return msg unless translatable?
 

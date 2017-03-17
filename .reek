@@ -1,0 +1,11 @@
+"test":
+  IrresponsibleModule:
+    enabled: false
+  UtilityFunction:
+    enabled: false
+  Attribute:
+    enabled: false
+  FeatureEnvy:
+    enabled: false
+  DataClump:
+    enabled: false
