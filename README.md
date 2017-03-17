@@ -1,5 +1,7 @@
 # CSV::I18n
 
+[![Build Status](https://travis-ci.org/jhubert/csv-i18n.svg?branch=master)](https://travis-ci.org/jhubert/csv-i18n)
+
 This gem makes it possible to translate the parsing error messages returned from the CSV core module using the [I18n](https://github.com/svenfuchs/i18n) library.
 
 ## Installation
